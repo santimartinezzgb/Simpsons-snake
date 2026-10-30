@@ -1,0 +1,66 @@
+<div id="options-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="options-title" hidden>
+    <div class="modal-card apple-modal-card options-card">
+        <button id="btn-close-options" class="icon-btn modal-close apple-close-btn" type="button" aria-label="Cerrar">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+            </svg>
+        </button>
+        <div class="modal-header-badge">AJUSTES DE SPRINGFIELD</div>
+        <h2 id="options-title">Opciones</h2>
+
+        <!-- Reglas de la Partida -->
+        <div class="options-section">
+            <label class="options-group-title">Reglas de la Partida</label>
+            <div class="apple-grouped-list">
+                <div class="option-card option-grid-card" id="option-grid-size">
+                    <div class="option-header">
+                        <div class="option-info-left">
+                            <div>
+                                <span class="option-name">Tamaño del tablero</span>
+                                <p class="option-desc" id="grid-desc">Cuadrícula seleccionada</p>
+                            </div>
+                        </div>
+                        <div class="grid-size-selector" role="group" aria-label="Tamaño del tablero">
+                            <button type="button" class="grid-size-btn" data-size="8">8x8</button>
+                            <button type="button" class="grid-size-btn" data-size="12">12x12</button>
+                            <button type="button" class="grid-size-btn" data-size="16">16x16</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="option-card option-toggle-card static-rule" id="option-walls-mode">
+                    <div class="option-header">
+                        <div class="option-info-left">
+                            <div>
+                                <span class="option-name">Paredes sólidas</span>
+                                <p class="option-desc">Chocar con el borde termina la partida (sin atravesar)</p>
+                            </div>
+                        </div>
+                        <span class="rule-badge">ACTIVO</span>
+                    </div>
+                </div>
+
+                <div class="option-card option-toggle-card" id="option-sound" role="button" tabindex="0"
+                    aria-pressed="true">
+                    <div class="option-header">
+                        <div class="option-info-left">
+                            <div>
+                                <span class="option-name">Sonidos de Springfield</span>
+                                <p class="option-desc">Efectos de audio estilo cómic al comer y chocar</p>
+                            </div>
+                        </div>
+                        <label class="apple-switch" for="switch-sound">
+                            <input type="checkbox" id="switch-sound" checked aria-label="Activar o desactivar sonido">
+                            <span class="switch-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-actions">
+            <button id="btn-save-options" class="apple-btn apple-btn-primary"
+                type="button"><span>¡Listo!</span></button>
+        </div>
+    </div>
+</div>

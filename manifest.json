@@ -1,0 +1,16 @@
+{
+  "name": "Snake — Apple Arcade Edition",
+  "short_name": "Snake",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231c1c1e'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='56'>🐍</text></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+/* =========================================================
+   COMPONENTE: CONTROLES D-PAD TÁCTIL (SPRINGFIELD COMIC)
+   ========================================================= */
+
+.dpad {
+    display: none;
+    grid-template-columns: repeat(3, 58px);
+    grid-template-rows: repeat(2, 50px);
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.dpad-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+    border: var(--border-comic-thin);
+    border-radius: 14px;
+    background: var(--simpson-yellow);
+    color: #000000;
+    font-size: 1.15rem;
+    cursor: pointer;
+    box-shadow: 2px 2px 0px #000000;
+    touch-action: manipulation;
+    transition: transform .08s, box-shadow .08s, background-color .1s;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+.dpad-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0px #000;
+    background: var(--simpson-pink);
+    color: #FFFFFF;
+}
+
+.dpad .up {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.dpad .left {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.dpad .down {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.dpad .right {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+@media (pointer: coarse) {
+    .dpad {
+        display: grid;
+    }
+}

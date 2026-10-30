@@ -1,0 +1,228 @@
+/* =========================================================
+   COMPONENTE: MODAL RANKING SPRINGFIELD (COMIC TOP 5)
+   ========================================================= */
+
+.ranking-modal-card {
+    width: min(960px, 96vw);
+    max-width: 960px;
+}
+
+.ranking-section {
+    width: 100%;
+}
+
+.ranking-boards-row {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    width: 100%;
+    align-items: stretch;
+    justify-content: center;
+    margin-top: 14px;
+}
+
+.ranking-board-col {
+    flex: 1 1 0px;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #FFFDF0;
+    padding: 14px 12px;
+    border: 2px solid #000000;
+    border-radius: 18px;
+    box-shadow: 2px 2px 0px #000;
+}
+
+.board-column-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.board-badge {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    padding: 5px 14px 4px;
+    border-radius: 14px;
+    border: 2px solid #000000;
+    box-shadow: 1.5px 1.5px 0px #000;
+    color: #111111;
+    letter-spacing: 0.04em;
+    line-height: 1;
+}
+
+.board-badge.badge-8 {
+    background: #7ED957;
+}
+
+.board-badge.badge-12 {
+    background: var(--simpson-yellow);
+}
+
+.board-badge.badge-16 {
+    background: #70D1FE;
+}
+
+.ranking-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    flex: 1;
+}
+
+.rank-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 14px;
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    box-shadow: 2px 2px 0px #000;
+    transition: transform .12s, background-color .15s;
+}
+
+.rank-row:hover {
+    background: #FEF9D9;
+}
+
+.rank-row.pos-1 {
+    background: var(--simpson-yellow);
+}
+.rank-row.pos-1:hover {
+    background: var(--simpson-yellow-hover, #FFE234);
+}
+
+.rank-row.pos-2 {
+    background: #BDC3C7;
+}
+.rank-row.pos-2:hover {
+    background: #CAD0D4;
+}
+
+.rank-row.pos-3 {
+    background: #E67E22;
+}
+.rank-row.pos-3:hover {
+    background: #F39C12;
+}
+.rank-row.pos-3 .rank-name,
+.rank-row.pos-3 .rank-time {
+    color: #FFFFFF;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.35);
+}
+.rank-row.pos-3 .rank-score {
+    color: #FFFDF0;
+    text-shadow: 1px 1px 0px #000000;
+}
+
+
+.rank-name {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #111111;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    line-height: 1.2;
+}
+
+.rank-score {
+    font-family: var(--font-display);
+    color: #D63031;
+    font-size: 1.05rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    line-height: 1;
+}
+
+.rank-score-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.88rem;
+    line-height: 1;
+}
+
+.rank-time {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: var(--simpson-text-secondary);
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+}
+
+.rank-row.me {
+    border: 2px solid #000000;
+    box-shadow: 3px 3px 0px #000000;
+}
+
+.rank-row.me .rank-name::after {
+    content: " (Tú)";
+    font-size: 0.78rem;
+    font-weight: 800;
+    opacity: 0.85;
+    margin-left: 4px;
+}
+
+.ranking-empty,
+.ranking-error,
+.ranking-loading {
+    padding: 20px;
+    text-align: center;
+    color: var(--simpson-text-secondary);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: 12px;
+    background: #FFFFFF;
+    border: 2px dashed #000000;
+    box-shadow: 2px 2px 0px #000;
+}
+
+.ranking-error {
+    color: #C0392B;
+}
+
+.ranking-loading::after {
+    content: " 🍩";
+    display: inline-block;
+    animation: donutSpin .75s linear infinite;
+}
+
+@keyframes donutSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 820px) {
+    .ranking-boards-row {
+        flex-direction: column;
+    }
+    .ranking-board-col {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .rank-row {
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+    }
+
+    .rank-time {
+        display: none;
+    }
+}

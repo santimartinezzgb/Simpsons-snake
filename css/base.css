@@ -1,0 +1,392 @@
+/* =========================================================
+   SNAKE — THE SIMPSONS SPRINGFIELD DESIGN SYSTEM
+   Variables de diseño, tokens, estética cómic y layout.
+   ========================================================= */
+
+:root {
+    /* Paleta Oficial de Los Simpson */
+    --simpson-yellow: #FED90F;
+    --simpson-yellow-hover: #FFE234;
+    --simpson-sky: #70D1FE;
+    --simpson-sky-deep: #4BA3E3;
+    --simpson-pink: #FF69B4;
+    --simpson-pink-hover: #FF80BF;
+    --simpson-green: #7ED957;
+    --simpson-green-glow: #39FF14;
+    --simpson-blue: #0077CC;
+    --simpson-blue-hover: #005FA3;
+    --simpson-donut: #E09C52;
+    --simpson-tv-purple: #7B4397;
+    --simpson-tv-dial: #C0392B;
+    --simpson-dark: #181F2A;
+    --simpson-darker: #0E131C;
+    --simpson-card: #FFFFFF;
+    --simpson-text: #111111;
+    --simpson-text-secondary: #4A5568;
+
+    /* Tokens de Estilo Cómic Cartoon */
+    --border-comic: 3px solid #000000;
+    --border-comic-thin: 2px solid #000000;
+    --border-comic-thick: 4px solid #000000;
+    --shadow-comic: 4px 4px 0px #000000;
+    --shadow-comic-lg: 7px 7px 0px #000000;
+    --shadow-comic-sm: 2px 2px 0px #000000;
+    --shadow-comic-btn: 3px 3px 0px #000000;
+
+    /* Curvaturas de Dibujo Animado */
+    --radius-comic-card: 22px;
+    --radius-comic-btn: 999px;
+    --radius-comic-sm: 12px;
+
+    /* Tipografías */
+    --font-display: 'Luckiest Guy', 'Bangers', cursive, sans-serif;
+    --font-body: 'Comic Neue', 'Inter', system-ui, sans-serif;
+    --mono: 'SF Mono', monospace;
+    --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Compatibilidad con modo claro / alternativo */
+:root.light-mode,
+body.light-mode {
+    --simpson-sky: #90DCFF;
+    --simpson-dark: #FFFFFF;
+}
+
+/* ---------- Resets y Base ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    background-color: #F1548F;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: transparent;
+    color: var(--simpson-text);
+    font-family: var(--font-body);
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    user-select: none;
+    position: relative;
+}
+
+/* ---------- Fondo Rosa Estilo Simpson (Glaseado de Rosquilla) ---------- */
+#springfield-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-color: #F1548F;
+    background-image:
+        radial-gradient(circle at 50% 30%, #FF7EB9 0%, #F1548F 55%, #D63774 100%);
+}
+
+
+/* ---------- Botones Base ---------- */
+button {
+    font-family: inherit;
+    border: none;
+    outline: none;
+    background: none;
+    color: inherit;
+}
+
+/* ---------- Web Components ---------- */
+snake-menu,
+snake-scoreboard,
+snake-board,
+snake-controls,
+snake-gameover-modal,
+snake-ranking-modal,
+snake-options-modal {
+    display: contents;
+}
+
+/* ---------- Layout Principal ---------- */
+#app {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    padding: 16px;
+}
+
+.screen {
+    grid-area: 1 / 1;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.screen.active {
+    display: flex;
+    animation: simpsonPopIn .3s var(--ease-bounce);
+}
+
+@keyframes simpsonPopIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.92) translateY(12px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* ---------- Tarjetas Estilo Cómic Simpsons ---------- */
+.apple-card,
+.modal-card {
+    background: #FFFDF0;
+    border: var(--border-comic);
+    border-radius: var(--radius-comic-card);
+    box-shadow: var(--shadow-comic-lg);
+    position: relative;
+    color: #111111;
+}
+
+/* ---------- Botones Cómic Simpsons (Píldoras y Rectángulos) ---------- */
+.apple-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 13px 24px;
+    border-radius: var(--radius-comic-btn);
+    border: var(--border-comic);
+    box-shadow: var(--shadow-comic-btn);
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: transform .12s, box-shadow .12s, background-color .15s;
+    text-decoration: none;
+    width: 100%;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+.apple-btn svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+    flex-shrink: 0;
+    filter: drop-shadow(1px 1px 0px #000);
+}
+
+.apple-btn span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.15;
+    padding-top: 2px;
+    box-sizing: border-box;
+}
+
+/* Botón Primario: Amarillo Simpson con hover rosa rosquilla */
+.apple-btn-primary {
+    background: var(--simpson-yellow);
+    color: #000000;
+}
+
+.apple-btn-primary:hover {
+    background: var(--simpson-yellow-hover);
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 0px #000;
+}
+
+.apple-btn-primary:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px #000;
+}
+
+/* Botón Secundario: Blanco / Azul cómic */
+.apple-btn-secondary {
+    background: #FFFFFF;
+    color: #111111;
+}
+
+.apple-btn-secondary:hover {
+    background: #F3F4F6;
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 0px #000;
+}
+
+.apple-btn-secondary:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px #000;
+}
+
+.apple-btn-sm {
+    padding: 8px 16px;
+    font-size: 0.95rem;
+    line-height: 1;
+    width: auto;
+}
+
+/* ---------- Modales Cómic Simpsons ---------- */
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    padding: 16px;
+    background: rgba(14, 19, 28, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    animation: modalBackdropIn .25s ease;
+}
+
+.modal[hidden],
+[hidden] {
+    display: none !important;
+}
+
+@keyframes modalBackdropIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.apple-modal-card {
+    position: relative;
+    width: min(520px, 100%);
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    padding: 34px 28px 28px;
+    text-align: center;
+    background: #FFFDF0;
+    border: var(--border-comic-thick);
+    border-radius: 26px;
+    box-shadow: var(--shadow-comic-lg);
+    animation: simpsonPopIn .3s var(--ease-bounce);
+}
+
+.modal-header-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 14px 4px;
+    line-height: 1;
+    background: var(--simpson-pink);
+    color: #FFFFFF;
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    border: var(--border-comic-thin);
+    border-radius: 20px;
+    box-shadow: var(--shadow-comic-sm);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    transform: rotate(-1.5deg);
+    box-sizing: border-box;
+}
+
+.apple-modal-card h2 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    letter-spacing: 0.02em;
+    color: #111111;
+    text-shadow: 2px 2px 0px var(--simpson-yellow);
+}
+
+.modal-sub {
+    margin: 6px 0 18px;
+    color: var(--simpson-text-secondary);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* Botón Circular Cómic de Cerrar X */
+.apple-close-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    background: var(--simpson-pink);
+    color: #FFFFFF;
+    border: var(--border-comic-thin);
+    box-shadow: var(--shadow-comic-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform .15s, background-color .15s;
+    box-sizing: border-box;
+}
+
+.apple-close-btn:hover {
+    background: #E84393;
+    transform: scale(1.1) rotate(6deg);
+}
+
+.apple-close-btn:active {
+    transform: scale(0.92);
+}
+
+.apple-close-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 3.2;
+    display: block;
+    flex-shrink: 0;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+@media (max-width: 480px) {
+    .apple-modal-card {
+        padding: 24px 18px 20px;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+}
+
+/* ---------- Firma de autoría discreta ---------- */
+.app-credits {
+    position: fixed;
+    bottom: 10px;
+    right: 16px;
+    z-index: 10;
+    pointer-events: none;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+    font-size: 0.72rem;
+    font-family: var(--font-display);
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
+    text-shadow: 1px 1px 0px #000000;
+    opacity: 0.85;
+}

@@ -1,0 +1,50 @@
+<div class="simpson-tv-container">
+    <!-- Antenas retro de la televisión de Los Simpson -->
+    <div class="tv-antennas" aria-hidden="true">
+        <div class="antenna antenna-left"></div>
+        <div class="antenna antenna-right"></div>
+        <div class="antenna-base"></div>
+    </div>
+
+    <!-- Mueble de la TV retro de los Simpson -->
+    <div class="tv-cabinet">
+        <!-- Pantalla CRT donde se aloja el Canvas del juego -->
+        <div class="tv-screen-bezel">
+            <div class="board-wrap">
+                <canvas id="board" aria-label="Tablero de juego de Los Simpson"></canvas>
+
+                <div id="overlay-start" class="board-overlay">
+                    <p class="overlay-title">¡TOCA PARA JUGAR!</p>
+                </div>
+
+                <div id="overlay-pause" class="board-overlay hidden">
+                    <p class="overlay-title">¡EN PAUSA!</p>
+                    <div class="overlay-actions">
+                        <button id="btn-resume" class="apple-btn apple-btn-primary"
+                            type="button"><span>Continuar</span></button>
+                        <button id="btn-quit" class="apple-btn apple-btn-secondary" type="button"><span>Menú
+                                principal</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel lateral con diales y altavoz de la televisión -->
+        <div class="tv-controls-panel" aria-hidden="true">
+            <div class="tv-badge" id="tv-location-badge">SECTOR 7G</div>
+            <div class="tv-knob knob-top">
+                <div class="knob-marker"></div>
+            </div>
+            <div class="tv-knob knob-bottom">
+                <div class="knob-marker"></div>
+            </div>
+            <div class="tv-speaker">
+                <span class="speaker-line"></span>
+                <span class="speaker-line"></span>
+                <span class="speaker-line"></span>
+                <span class="speaker-line"></span>
+            </div>
+            <div class="tv-power-led"></div>
+        </div>
+    </div>
+</div>

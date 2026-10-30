@@ -1,0 +1,228 @@
+/* =========================================================
+   COMPONENTE: HUD / SCOREBOARD SPRINGFIELD COMIC
+   ========================================================= */
+
+.simpson-hud {
+    --board-size: min(84vw, calc(100vh - 220px), 520px);
+    width: var(--board-size);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    background: #FFFDF0;
+    border: var(--border-comic);
+    border-radius: var(--radius-comic-btn);
+    box-shadow: var(--shadow-comic);
+    gap: 8px;
+    z-index: 5;
+}
+
+/* Badge de Personaje Activo (sin foto) */
+.hud-character {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--simpson-yellow);
+    border: 2px solid #000000;
+    border-radius: 20px;
+    padding: 4px 12px;
+    box-shadow: 2px 2px 0px #000;
+    line-height: 1;
+    box-sizing: border-box;
+}
+
+.hud-character span {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    color: #000000;
+    letter-spacing: 0.03em;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+}
+
+.hud-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hud-label {
+    font-family: var(--font-display);
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    color: var(--simpson-text-secondary);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    line-height: 1;
+}
+
+.hud-emoji {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    line-height: 1;
+}
+
+.hud-value {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: #111111;
+    line-height: 1;
+    margin-top: 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .15s ease-out;
+}
+
+#hud-score {
+    color: #D63031;
+    text-shadow: 1px 1px 0px #FED90F;
+}
+
+#hud-best {
+    color: #D35400;
+}
+
+.hud-divider {
+    width: 2px;
+    height: 24px;
+    background: #000000;
+    opacity: 0.2;
+    align-self: center;
+}
+
+/* Micro-animación cómic al sumar rosquillas */
+.hud-value.bump {
+    animation: simpsonBump .25s var(--ease-bounce);
+}
+
+@keyframes simpsonBump {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4) rotate(-3deg); }
+    100% { transform: scale(1); }
+}
+
+/* Botón de Pausa Cómic */
+.hud-pause-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--simpson-pink);
+    border: 2px solid #000000;
+    box-shadow: 2px 2px 0px #000;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: transform .12s, box-shadow .12s;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.hud-pause-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 3px 3px 0px #000;
+    background: var(--simpson-pink-hover);
+}
+
+.hud-pause-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px #000;
+}
+
+.hud-pause-btn svg {
+    width: 14px;
+    height: 14px;
+    display: block;
+    flex-shrink: 0;
+}
+
+/* Bocadillo de Cómic con Citas de la API */
+.comic-speech-bubble {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+    background: #FFFFFF;
+    border: 3px solid #000000;
+    border-radius: 18px;
+    padding: 8px 16px;
+    box-shadow: 4px 4px 0px #000000;
+    max-width: 90%;
+    width: max-content;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: #111111;
+    z-index: 20;
+    animation: speechPop .3s var(--ease-bounce);
+    pointer-events: none;
+    box-sizing: border-box;
+}
+
+.comic-speech-bubble.hidden {
+    display: none !important;
+}
+
+.bubble-arrow {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 10px solid #000000;
+}
+
+.bubble-arrow::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: -6px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 8px solid #FFFFFF;
+}
+
+@keyframes speechPop {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+@media (max-width: 480px) {
+    .hud-character {
+        padding: 3px 8px;
+    }
+
+    .hud-character span {
+        font-size: 0.75rem;
+    }
+
+    .simpson-hud {
+        padding: 6px 10px;
+    }
+}

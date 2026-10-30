@@ -1,0 +1,286 @@
+/* =========================================================
+   COMPONENTE: TABLERO DE JUEGO (TELEVISIÓN RETRO SIMPSONS)
+   ========================================================= */
+
+.simpson-tv-container {
+    --tv-screen-size: min(84vw, calc(100vh - 220px), 520px);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/* Antenas de conejo cromadas */
+.tv-antennas {
+    position: relative;
+    width: 140px;
+    height: 38px;
+    margin-bottom: -6px;
+    z-index: 2;
+}
+
+.antenna-base {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 44px;
+    height: 12px;
+    background: #4B4B4B;
+    border: 3px solid #000000;
+    border-radius: 8px 8px 0 0;
+}
+
+.antenna {
+    position: absolute;
+    bottom: 8px;
+    width: 6px;
+    height: 48px;
+    background: linear-gradient(90deg, #FFFFFF, #B0B0B0);
+    border: 2px solid #000000;
+    border-radius: 3px;
+}
+
+.antenna::after {
+    content: '';
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    background: #E74C3C;
+    border: 2px solid #000000;
+    border-radius: 50%;
+    box-shadow: 1px 1px 0px #000;
+}
+
+.antenna-left {
+    left: 50px;
+    transform-origin: bottom center;
+    transform: rotate(-32deg);
+}
+
+.antenna-right {
+    right: 50px;
+    transform-origin: bottom center;
+    transform: rotate(32deg);
+}
+
+/* Mueble Morado de la Televisión */
+.tv-cabinet {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(145deg, #8E44AD 0%, #6C3483 100%);
+    border: 4px solid #000000;
+    border-radius: 32px;
+    padding: 18px 20px 22px 20px;
+    box-shadow: 8px 8px 0px #000000;
+    gap: 16px;
+}
+
+/* Bisel de la Pantalla CRT */
+.tv-screen-bezel {
+    background: #111111;
+    border: 4px solid #000000;
+    border-radius: 24px;
+    padding: 6px;
+    box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.9);
+}
+
+.board-wrap {
+    position: relative;
+    width: var(--tv-screen-size);
+    height: var(--tv-screen-size);
+    border-radius: 18px;
+    overflow: hidden;
+    background: #000000;
+    border: 3px solid #000000;
+}
+
+.board-wrap.wrap-mode {
+    border-color: var(--simpson-green-glow);
+    box-shadow: 0 0 16px rgba(126, 217, 87, 0.45);
+}
+
+.board-wrap.danger {
+    border-color: #E74C3C;
+    box-shadow: 0 0 20px rgba(231, 76, 60, 0.6);
+}
+
+.board-wrap.shake {
+    animation: tvShake .45s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+@keyframes tvShake {
+    10%, 90% { transform: translate(-3px, 0); }
+    20%, 80% { transform: translate(4px, 0); }
+    30%, 50%, 70% { transform: translate(-5px, 0); }
+    40%, 60% { transform: translate(5px, 0); }
+}
+
+#board {
+    display: block;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+    border-radius: 16px;
+}
+
+/* Panel Lateral de Controles de la TV */
+.tv-controls-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 8px 4px;
+}
+
+.tv-badge {
+    background: var(--simpson-yellow);
+    border: 2px solid #000000;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+    color: #000000;
+    box-shadow: 2px 2px 0px #000;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    box-sizing: border-box;
+}
+
+.tv-knob {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    background: radial-gradient(circle, #E5E7EB 0%, #9CA3AF 100%);
+    border: 3px solid #000000;
+    border-radius: 50%;
+    box-shadow: 3px 3px 0px #000;
+    display: grid;
+    place-items: center;
+}
+
+.knob-marker {
+    width: 4px;
+    height: 16px;
+    background: #000000;
+    border-radius: 2px;
+}
+
+.knob-top .knob-marker {
+    transform: rotate(45deg);
+}
+
+.knob-bottom .knob-marker {
+    transform: rotate(-30deg);
+}
+
+/* Ranuras del Altavoz */
+.tv-speaker {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 38px;
+    padding: 4px 0;
+}
+
+.speaker-line {
+    width: 100%;
+    height: 4px;
+    background: #2C1838;
+    border: 1px solid #000000;
+    border-radius: 3px;
+}
+
+.tv-power-led {
+    width: 10px;
+    height: 10px;
+    background: #2ECC71;
+    border: 2px solid #000000;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #2ECC71;
+    margin-top: 4px;
+}
+
+/* Overlays dentro del Canvas */
+.board-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(14, 19, 28, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    text-align: center;
+    padding: 24px;
+    animation: simpsonPopIn .25s var(--ease-bounce);
+    border-radius: 16px;
+}
+
+.board-overlay.hidden {
+    display: none !important;
+}
+
+#overlay-start {
+    background: rgba(14, 19, 28, 0.45);
+    backdrop-filter: none;
+    pointer-events: none;
+    justify-content: flex-end;
+    padding-bottom: 12%;
+}
+
+.overlay-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    letter-spacing: 0.04em;
+    color: var(--simpson-yellow);
+    text-shadow: 3px 3px 0px #000000;
+    line-height: 1.1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay-sub {
+    margin: 8px 0 0;
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 700;
+    text-shadow: 1px 1px 0px #000000;
+    max-width: 320px;
+    line-height: 1.3;
+}
+
+.overlay-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+    width: min(300px, 100%);
+}
+
+@media (max-width: 600px) {
+    .tv-controls-panel {
+        display: none;
+    }
+
+    .tv-cabinet {
+        padding: 12px;
+        border-radius: 24px;
+    }
+
+    .tv-antennas {
+        transform: scale(0.85);
+    }
+}

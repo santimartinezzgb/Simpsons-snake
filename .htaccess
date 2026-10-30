@@ -1,0 +1,24 @@
+# =========================================================
+# SEGURIDAD Y CONFIGURACIÓN APACHE
+# =========================================================
+
+# 1. Impedir listado de directorios
+Options -Indexes
+
+# 2. Bloquear acceso a ficheros ocultos (.env, .git, .gitignore, etc.)
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# 3. Bloquear acceso a ficheros internos y de configuración
+<FilesMatch "^(config\.php|db\.php|router\.php|instrucciones\.md|README\.md|\.env.*)$">
+    Require all denied
+</FilesMatch>
+
+# 4. Cabeceras de seguridad
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+

@@ -1,0 +1,50 @@
+<div id="gameover-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="gameover-title" hidden>
+    <div class="gameover-container">
+        <!-- Panel Principal: Resumen y botones (o formulario si entra en TOP 5) -->
+        <div class="modal-card apple-modal-card gameover-main-card">
+            <div id="gameover-title" class="modal-header-badge">¡FIN DE LA PARTIDA!</div>
+
+            <div class="stats apple-stats">
+                <div class="stat">
+                    <span class="stat-label">Rosquillas</span>
+                    <span id="final-score" class="stat-value">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Tiempo</span>
+                    <span id="final-time" class="stat-value">00:00</span>
+                </div>
+            </div>
+
+            <!-- Solo visible si la partida supera al TOP 5 actual -->
+            <form id="save-form" class="save-form apple-save-form" novalidate hidden>
+                <label for="player-name">¡Nuevo récord! Registra tu nombre</label>
+                <div class="save-row">
+                    <input id="player-name" name="name" type="text" maxlength="20" placeholder="Nombre"
+                        autocomplete="nickname" required>
+                    <button id="btn-save" class="apple-btn apple-btn-primary apple-btn-sm"
+                        type="submit"><span>Guardar</span></button>
+                    <button id="btn-skip" class="apple-btn apple-btn-secondary apple-btn-sm"
+                        type="button"><span>Rechazar</span></button>
+                </div>
+                <div id="save-msg" class="form-msg" role="status" aria-live="polite" hidden></div>
+            </form>
+
+            <div class="modal-actions">
+                <button id="btn-retry" class="apple-btn apple-btn-primary" type="button"><span>Jugar de
+                        nuevo</span></button>
+                <button id="btn-menu" class="apple-btn apple-btn-secondary" type="button"><span>Menú
+                        principal</span></button>
+            </div>
+        </div>
+
+        <!-- Panel Lateral Derecho: TOP 5 de Springfield (solo si supera al TOP 5) -->
+        <div id="gameover-ranking-card" class="modal-card apple-modal-card gameover-ranking-card" hidden>
+            <div class="ranking-header">
+                <div class="modal-header-badge">CLASIFICACIÓN</div>
+                <h3 id="gameover-ranking-title">Top 5 de Springfield</h3>
+                <p id="gameover-ranking-sub" class="ranking-sub">Los mejores comedores de rosquillas</p>
+            </div>
+            <div id="gameover-ranking" class="ranking-list"></div>
+        </div>
+    </div>
+</div>

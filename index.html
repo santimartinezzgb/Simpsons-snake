@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Simpsons: Snake — Springfield Edition</title>
+    <meta name="description"
+        content="El clásico juego de Snake ambientado en el universo de Los Simpson con APIs en tiempo real, rosquillas y Springfield.">
+    <meta name="theme-color" content="#FED90F">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23FED90F' stroke='%23000' stroke-width='4'/><circle cx='50' cy='50' r='38' fill='%23FF69B4'/><circle cx='50' cy='50' r='16' fill='%23FED90F' stroke='%23000' stroke-width='3'/><text x='62' y='42' font-size='16'>🍩</text></svg>">
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:ital,wght@0,400;0,700;1,700&family=Luckiest+Guy&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+</head>
+
+<body>
+    <!-- Fondo dinámico de Springfield y nubes cartoon -->
+    <div id="springfield-backdrop" aria-hidden="true"></div>
+
+
+    <main id="app">
+        <!-- Pantalla de Menú Principal -->
+        <snake-menu></snake-menu>
+
+        <!-- Pantalla de Juego en Curso -->
+        <section id="game-screen" class="screen" aria-label="Partida en curso">
+            <snake-scoreboard></snake-scoreboard>
+            <snake-board></snake-board>
+            <snake-controls></snake-controls>
+        </section>
+    </main>
+
+    <!-- Modales Autónomos -->
+    <snake-gameover-modal></snake-gameover-modal>
+    <snake-ranking-modal></snake-ranking-modal>
+    <snake-options-modal></snake-options-modal>
+
+    <!-- Firma discreta de autoría -->
+    <footer class="app-credits" aria-label="Créditos">
+        <span>The Simpsons™ Snake · Santiago Martínez · 2026</span>
+    </footer>
+
+    <!-- Motores y Servicios -->
+    <script src="js/sound.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/game.js"></script>
+    <!-- Entrada Modular de la Aplicación -->
+    <script type="module" src="src/app.js"></script>
+</body>
+
+</html>
